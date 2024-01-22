@@ -4,8 +4,14 @@
 
 {% block content %}
 
-    <h3>My {{project.id}} project is:</h3>
     <p>Title: {{ project.title }}</p>
     <p>Discriptio: {{ project.description }}</p>
+    <hr>
+    <span>Tags:</span>
+    <ul>
+        {% for tag in project.tags.all %}
+            <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
 
 {% endblock content %}
