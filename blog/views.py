@@ -1,25 +1,8 @@
 from django.shortcuts import render
-
-projects_list = [
-    {
-        'id': 1,
-        'title': 'Ecommerce Website',
-        'description': 'fully functional ecommerce website',
-    },
-    {
-        'id': 2,
-        'title': 'Portfolio Website',
-        'description': 'this was a project where i built my portfolio',
-    },
-    {
-        'id': 3,
-        'title': 'Social Network',
-        'description': 'Awsome open source project I am still working on',
-    }
-]
-
+from .models import Project
 
 def projects(request):
+    projects_list = Project.objects.all()
     context = {
         'projects': projects_list
     }
@@ -28,11 +11,7 @@ def projects(request):
 
 
 def project(request, pk):
-   project_obj = None
-   for i in projects_list:
-       if i['id'] == pk:
-           project_obj = i
-           break
+   project_obj = Project.objects.get(id=pk)
    context = {
        'project': project_obj
    }
