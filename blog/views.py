@@ -28,7 +28,7 @@ def create_project(request):
             form.save()
             return redirect('projects')
 
-    return render(request, 'blog/create_project_form.html', {'form': form})
+    return render(request, 'blog/create_project.html', {'form': form})
 
 
 def update_project(request, pk):
@@ -41,7 +41,7 @@ def update_project(request, pk):
             form.save()
             return redirect('projects')
 
-    return render(request, 'blog/create_project_form.html', {'form': form})
+    return render(request, 'blog/create_project.html', {'form': form})
 
 
 def delete_project(request, pk):
@@ -51,4 +51,4 @@ def delete_project(request, pk):
         project_obj.delete()
         return redirect('projects')
 
-    return render(request, 'blog/delete_form.html', {'obj': project_obj})
+    return render(request, 'blog/delete.html', {'obj': project_obj})
