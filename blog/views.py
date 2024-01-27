@@ -31,3 +31,24 @@ def create_project(request):
     return render(request, 'blog/create_project_form.html', {'form': form})
 
 
+def update_project(request, pk):
+    project_obj = Project.objects.get(id=pk)
+    form = ProjectForm(instance=project_obj)
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, instance=project_obj)
+        if form.is_valid():
+            form.save()
+            return redirect('projects')
+
+    return render(request, 'blog/create_project_form.html', {'form': form})
+
+
+def delete_project(request, pk):
+    project_obj = Project.objects.get(id=pk)
+
+    if request.method == 'POST':
+        project_obj.delete()
+        return redirect('projects')
+
+    return render(request, 'blog/delete_form.html', {'obj': project_obj})
