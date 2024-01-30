@@ -618,4 +618,7 @@ pyrightconfig.json
 .history
 .ionide
 
+# django staticfiles
+staticfiles/
+
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,pycharm+iml,pycharm+all,python,jetbrains,jetbrains+all,jetbrains+iml,visualstudiocode
