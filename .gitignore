@@ -622,3 +622,4 @@ pyrightconfig.json
 staticfiles/
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,pycharm+iml,pycharm+all,python,jetbrains,jetbrains+all,jetbrains+iml,visualstudiocode
+.vscode/extensions.json
