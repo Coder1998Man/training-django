@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import CustomUser, profile
+from .models import CustomUser, profile, Skill
 
 class CustomUserAdmin(UserAdmin):
     # Specify the fields to display in the admin list view
@@ -22,3 +22,4 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(profile)
+admin.site.register(Skill)
