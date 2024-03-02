@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 import uuid
 from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class CustomUser(AbstractUser):
@@ -47,9 +48,9 @@ class Skill(models.Model):
 
 
 # Profile Update Signal
+@receiver(post_save, sender=profile)
 def profileUpdated(sender, instance, created, **kwargs):
     print('Profile Saved!')
     print('Instance:', instance)
     print('Created:', created)
 
-post_save.connect(profileUpdated, sender=profile)
