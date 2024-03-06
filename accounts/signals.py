@@ -13,3 +13,10 @@ def create_profile(sender, instance, created, **kwargs):
 post_save.connect(create_profile, sender=CustomUser)
 
 
+
+@receiver(post_delete, sender=profile)
+def delete_user(sender, instance, **kwargs):
+    print('user deleted')
+    user = instance.user
+    user.delete()
+
