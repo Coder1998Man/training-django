@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
 from .models import profile
 from .models import CustomUser
 
 
 def login_user(request):
-
     if request.user.is_authenticated:
         return redirect('profiles')
     if request.method == 'POST':
@@ -15,7 +15,7 @@ def login_user(request):
         try:
             user = User.objects.get(username=username)
         except:
-            print('Username does not exist')
+            messages.error(request, 'User does not exist')
 
         user = authenticate(request, username=username, password=password)
 
@@ -23,7 +23,7 @@ def login_user(request):
             login(request, user)
             return redirect('profiles')
         else:
-            print('Username or password is incorrect')
+            messages.error(request, 'Username or password is incorrect')
 
     return render(request, 'accounts/login-register.html')
 
