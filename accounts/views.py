@@ -3,9 +3,32 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import profile
 from .models import CustomUser
+from .forms import CustomUserCreationForm
+
+
+def register_user(request):
+    page = 'register'
+    form = CustomUserCreationForm()
+
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+
+            messages.success(request, 'User account was created!')
+
+    context = {
+        'page': page,
+        'form': form,
+    }
+
+    return render(request, 'accounts/login-register.html', context)
 
 
 def login_user(request):
+    page = 'login'
     if request.user.is_authenticated:
         return redirect('profiles')
     if request.method == 'POST':
@@ -13,9 +36,9 @@ def login_user(request):
         password = request.POST['password']
 
         try:
-            user = User.objects.get(username=username)
+            user = CustomUser.objects.get(username=username)
         except:
-            messages.error(request, 'User does not exist')
+            messages.error(request, 'Username does not exist')
 
         user = authenticate(request, username=username, password=password)
 
