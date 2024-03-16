@@ -19,6 +19,11 @@ def register_user(request):
 
             messages.success(request, 'User account was created!')
 
+            login(request, user)
+            return redirect('profiles')
+        else:
+            messages.error(request, 'an error occurred during registration!')
+
     context = {
         'page': page,
         'form': form,
