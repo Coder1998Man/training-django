@@ -5,14 +5,41 @@
 {% block content %}
     {% if page == 'register' %}
         <p>REGISTER PAGE</p>
-
-        <form action="{% url 'register' %}" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="register">
-        </form>
         
-        <p>already have an account? <a href="{% url 'login' %}">login</a></p>
+            <div class="auth">
+      <div class="card">
+        <div class="auth__header text-center">
+          <a href="/">
+            <img src="{% static 'images/icon.svg' %}" alt="icon" />
+          </a>
+          <h3>Account SignUp</h3>
+          <p>Create a new developer account</p>
+        </div>
+
+        <form action="{% url 'register' %}" method="POST" class="form auth__form">
+          <!-- Input:Text -->
+          <div class="form__field">
+            <label for="formInput#text">Full Name: </label>
+            <input
+              class="input input--text"
+              id="formInput#text"
+              type="text"
+              name="text"
+              placeholder="e.g. Dennis Ivanov"
+            />
+          </div>
+
+          <div class="auth__actions">
+            <input class="btn btn--sub btn--lg" type="submit" value="Sign  In" />
+          </div>
+        </form>
+        <div class="auth__alternative">
+          <p>Already have an Account?</p>
+          <a href="{% url 'login' %}">Log In</a>
+        </div>
+      </div>
+    </div>
+        
         
     {% else %}    
         
