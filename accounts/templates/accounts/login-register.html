@@ -4,9 +4,7 @@
 
 {% block content %}
     {% if page == 'register' %}
-        <p>REGISTER PAGE</p>
-        
-            <div class="auth">
+        <div class="auth">
       <div class="card">
         <div class="auth__header text-center">
           <a href="/">
@@ -17,6 +15,8 @@
         </div>
 
         <form action="{% url 'register' %}" method="POST" class="form auth__form">
+            {% csrf_token %}
+            
           <!-- Input:Text -->
           <div class="form__field">
             <label for="formInput#text">Full Name: </label>
