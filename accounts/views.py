@@ -80,3 +80,8 @@ def userProfile(request, pk):
         'other_skills': other_skills
     }
     return render(request, 'accounts/user-profile.html', context)
+
+
+def user_account(request):
+    context = {}
+    return render(request, 'accounts/account.html', context)
