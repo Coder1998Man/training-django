@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import profile
 from .models import CustomUser
@@ -81,7 +82,8 @@ def userProfile(request, pk):
     }
     return render(request, 'accounts/user-profile.html', context)
 
-
+@login_required(login_url=login)
 def user_account(request):
-    context = {}
+    profile = request.user.profile
+    context = {'profile': profile}
     return render(request, 'accounts/account.html', context)
