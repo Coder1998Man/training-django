@@ -85,5 +85,6 @@ def userProfile(request, pk):
 @login_required(login_url=login)
 def user_account(request):
     profile = request.user.profile
-    context = {'profile': profile}
+    skills = profile.skill_set.all()
+    context = {'profile': profile, 'skills': skills}
     return render(request, 'accounts/account.html', context)
