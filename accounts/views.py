@@ -89,3 +89,8 @@ def user_account(request):
     projects = profile.project_set.all()
     context = {'profile': profile, 'skills': skills, 'projects': projects}
     return render(request, 'accounts/account.html', context)
+
+@loin_recquired(login_url=login)
+def edit_account(request):    
+    context = {}
+    return render(request, 'accounts/profile-form.html', context)
