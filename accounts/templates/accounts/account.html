@@ -54,13 +54,11 @@
           </div>
 
           <table class="settings__table">
+            {% for skill in skills %}
             <tr>
               <td class="settings__tableInfo">
-                <h4>JavaScript</h4>
-                <p>
-                  Consectetur adipisicing elit. Natus nam dolore aut sed vitae eos architecto unde tempore
-                  exercitationem fugiat?...
-                </p>
+                <h4>{{skill.name}}</h4>
+                <p>{{skill.description}}</p>
               </td>
               <td class="settings__tableActions">
                 <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
@@ -68,31 +66,7 @@
                   Delete</a>
               </td>
             </tr>
-            <tr>
-              <td class="settings__tableInfo">
-                <h4>Python</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, suscipit...</p>
-              </td>
-              <td class="settings__tableActions">
-                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
-                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>
-                  Delete</a>
-              </td>
-            </tr>
-            <tr>
-              <td class="settings__tableInfo">
-                <h4>Django</h4>
-                <p>
-                  Amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                  odio Est, suscipit...
-                </p>
-              </td>
-              <td class="settings__tableActions">
-                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
-                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>
-                  Delete</a>
-              </td>
-            </tr>
+            {% endfor %}         
           </table>
 
           <div class="settings">
